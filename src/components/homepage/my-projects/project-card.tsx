@@ -40,13 +40,11 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
                     {project.description}
                 </p>
 
-                {/* Destaque Técnico */}
                 <div className="mb-4 p-2 bg-orange-50 rounded-lg border-l-4 border-orange-400">
                     <span className="text-xs font-bold text-orange-700 uppercase tracking-wider block">Destaque Técnico:</span>
                     <span className="text-sm text-orange-900">{project.techHighlight}</span>
                 </div>
 
-                {/* Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
                     {project.stack.map((tech) => (
                         <span key={tech} className="px-2 py-1 text-[10px] font-semibold bg-slate-100 text-slate-500 rounded-md uppercase">
@@ -55,7 +53,6 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
                     ))}
                 </div>
 
-                {/* Ações - Empurra para o rodapé do card */}
                 <div className="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                     <a
                         href={project.githubUrl}

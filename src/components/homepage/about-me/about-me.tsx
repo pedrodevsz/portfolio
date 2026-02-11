@@ -15,12 +15,10 @@ const events: TimelineEvent[] = [
     { year: "2024 2 sem", text: "Shadcn ui, Spring boot e MongoDB" },
     { year: "2025 1 sem", text: "Projetos reais com Next e Spring, Docker e Primeiro serviço remunerado" },
 ];
-// Dentro de AboutMe
 export function AboutMe() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
-        // Padding reduzido de py-20 para w-full para respeitar o Dashboard pai
         <section className="flex flex-col items-center w-full py-12">
             <div className="text-center mb-20">
                 <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter">
@@ -29,17 +27,13 @@ export function AboutMe() {
                 <p className="text-slate-500 mt-4 font-medium italic">Passe o mouse nas datas para ver os detalhes</p>
             </div>
 
-            {/* Container da Timeline */}
             <div className="flex flex-wrap justify-center gap-y-24 gap-x-4 md:gap-x-12 max-w-6xl mx-auto relative px-4">
                 {events.map((event, index) => (
                     <div
                         key={index}
-                        className={`relative flex items-center transition-all duration-500 ${
-                            // Suavizei o deslocamento para não criar muito espaço vazio
-                            index % 2 === 0 ? "md:-translate-y-6" : "md:translate-y-6"
+                        className={`relative flex items-center transition-all duration-500 ${index % 2 === 0 ? "md:-translate-y-6" : "md:translate-y-6"
                             }`}
                     >
-                        {/* Linha Conectora (Oculta em mobile para não quebrar o layout) */}
                         {index !== events.length - 1 && (
                             <div className="absolute left-full w-12 md:w-24 h-0.5 bg-slate-200 -z-10 hidden lg:block"
                                 style={{
@@ -58,12 +52,10 @@ export function AboutMe() {
                         >
                             {event.year}
 
-                            {/* Tooltip Ajustado */}
                             <div className={`absolute bottom-full mb-4 w-48 p-4 bg-slate-900 text-white text-xs rounded-xl 
                                            shadow-2xl transition-all duration-300 pointer-events-none z-30 
                                            ${hoveredIndex === index ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"}`}>
                                 {event.text}
-                                {/* Triângulo do Tooltip (agora embaixo) */}
                                 <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 bg-slate-900 rotate-45" />
                             </div>
                         </div>

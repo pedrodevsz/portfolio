@@ -7,11 +7,11 @@ import {
     FaTiktok
 } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
-import { IconType } from 'react-icons'; // Importamos o tipo dos ícones
+import { IconType } from 'react-icons';
 
 interface SocialLink {
     name: string;
-    icon: IconType; // Define que é um componente de ícone
+    icon: IconType;
     url: string;
     color: string;
     label: string;
@@ -67,7 +67,6 @@ export function Contacts() {
 
             <div className="flex flex-wrap justify-center gap-6 md:gap-10 px-6">
                 {socialLinks.map((social) => {
-                    // Atribuímos a uma variável com letra maiúscula para o React reconhecer como componente
                     const Icon = social.icon;
 
                     return (
