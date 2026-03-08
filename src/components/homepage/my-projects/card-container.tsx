@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { getProjects } from "@/lib/mongodb/get-projects"
 import { ProjectsGrid } from "./projects-grid"
 

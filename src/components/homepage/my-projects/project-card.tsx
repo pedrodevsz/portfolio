@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FiGithub, FiExternalLink } from "react-icons/fi"; // npm install react-icons
+import { FiGithub, FiExternalLink } from "react-icons/fi";
 
 interface ProjectProps {
     title: string;
