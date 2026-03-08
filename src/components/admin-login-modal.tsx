@@ -34,7 +34,7 @@ export function AdminLoginModal() {
         })
 
         if (res.ok) {
-            router.push("/admin")
+            router.push("/my-projects")
             router.refresh()
         } else {
             alert("Código inválido")

@@ -1,20 +1,35 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
 
-export function middleware(request: NextRequest) {
-    const isAdminRoute = request.nextUrl.pathname.startsWith("/admin")
+export function middleware(req: NextRequest) {
 
-    if (!isAdminRoute) return NextResponse.next()
+    const { pathname } = req.nextUrl
+    const token = req.cookies.get("admin_auth")
 
-    const auth = request.cookies.get("auth")
+    const protectedRoutes = [
+        "/create-project",
+        "/my-projects"
+    ]
 
-    if (!auth) {
-        return NextResponse.redirect(new URL("/admin/login", request.url))
+    const isProtected = protectedRoutes.some(route =>
+        pathname.startsWith(route)
+    )
+
+    if (isProtected && !token) {
+        return NextResponse.redirect(new URL("/login", req.url))
+    }
+
+    if (pathname === "/login" && token) {
+        return NextResponse.redirect(new URL("/my-projects", req.url))
     }
 
     return NextResponse.next()
 }
 
 export const config = {
-    matcher: ["/admin/:path*"]
+    matcher: [
+        "/create-project/:path*",
+        "/my-projects/:path*",
+        "/login"
+    ]
 }
