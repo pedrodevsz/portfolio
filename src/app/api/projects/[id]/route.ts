@@ -1,15 +1,33 @@
 import { NextResponse } from "next/server"
-import clientPromise from "@/lib/mongodb/mongodb"
 import { ObjectId } from "mongodb"
+import clientPromise from "@/lib/mongodb/mongodb"
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
-    const client = await clientPromise
-    const db = client.db("portfolio")
+export const runtime = "nodejs"
 
-    await db.collection("projects").deleteOne({
-        _id: new ObjectId(params.id)
-    })
+export async function DELETE(
+    req: Request,
+    context: { params: Promise<{ id: string }> }
+) {
 
-    return NextResponse.json({ success: true })
+    const { id } = await context.params
+
+    try {
+        const client = await clientPromise
+        const db = client.db("portfolio")
+
+        await db.collection("projects").deleteOne({
+            _id: new ObjectId(id)
+        })
+
+        return NextResponse.json({ success: true })
+
+    } catch (error) {
+
+        console.error("DELETE PROJECT ERROR:", error)
+
+        return NextResponse.json(
+            { error: "Erro ao deletar projeto" },
+            { status: 500 }
+        )
+    }
 }
-

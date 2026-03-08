@@ -1,6 +1,8 @@
 import clientPromise from "@/lib/mongodb/mongodb"
 import { NextResponse } from "next/server"
 
+export const runtime = "nodejs"
+
 export async function POST(req: Request) {
     try {
         const body = await req.json()
@@ -15,11 +17,11 @@ export async function POST(req: Request) {
 
         return NextResponse.json({
             success: true,
-            id: result.insertedId
+            id: result.insertedId.toString()
         })
 
     } catch (error) {
-        console.error(error)
+        console.error("CREATE PROJECT ERROR:", error)
 
         return NextResponse.json(
             { error: "Erro ao salvar projeto" },
@@ -40,8 +42,10 @@ export async function GET() {
             .toArray()
 
         return NextResponse.json(projects)
+
     } catch (error) {
-        console.error(error)
+        console.error("GET PROJECTS ERROR:", error)
+
         return NextResponse.json(
             { error: "Erro ao buscar projetos" },
             { status: 500 }
