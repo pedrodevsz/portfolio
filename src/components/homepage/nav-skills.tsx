@@ -1,8 +1,8 @@
 "use client"
 import { motion } from "framer-motion";
 import { DiJava } from "react-icons/di";
-import { SiAmazon, SiJavascript, SiPostgresql, SiReact, SiSpringboot } from "react-icons/si";
-
+import { SiJavascript, SiPostgresql, SiReact, SiSpringboot } from "react-icons/si";
+import { FaAmazon } from "react-icons/fa";
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -56,7 +56,7 @@ export function IconsSkills() {
             <Skill icon={SiSpringboot} label="Spring" />
             <Skill icon={SiReact} label="React" />
             <Skill icon={SiPostgresql} label="Postgres" />
-            <Skill icon={SiAmazon} label="AWS" />
+            <Skill icon={FaAmazon} label="AWS" />
         </motion.nav>
     )
 }
