@@ -1,14 +1,13 @@
-import { NextResponse } from "next/server"
+import { NextResponse, NextRequest } from "next/server"
 import { ObjectId } from "mongodb"
 import clientPromise from "@/lib/mongodb/mongodb"
 
 export const runtime = "nodejs"
 
 export async function DELETE(
-    req: Request,
+    request: NextRequest,
     context: { params: Promise<{ id: string }> }
 ) {
-
     const { id } = await context.params
 
     try {
@@ -22,7 +21,6 @@ export async function DELETE(
         return NextResponse.json({ success: true })
 
     } catch (error) {
-
         console.error("DELETE PROJECT ERROR:", error)
 
         return NextResponse.json(
