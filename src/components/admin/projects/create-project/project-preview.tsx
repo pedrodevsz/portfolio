@@ -10,16 +10,6 @@ export default function ProjectPreview({ values, previewImage }: Props) {
 
     return (
         <aside className="space-y-4">
-
-            <div>
-                <h2 className="text-lg font-semibold">
-                    Prévia
-                </h2>
-                <p className="text-sm text-gray-500">
-                    Atualiza automaticamente.
-                </p>
-            </div>
-
             <div className="sticky top-6">
 
                 <ProjectPreviewCard
