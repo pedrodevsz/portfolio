@@ -15,7 +15,7 @@ export async function MyProjects() {
     }
 
     return (
-        <section className="py-16 px-6 max-w-7xl mx-auto">
+        <section className="py-6 px-6 max-w-7xl mx-auto">
 
             <div className="mb-12 text-center">
                 <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900">
@@ -27,12 +27,16 @@ export async function MyProjects() {
             </div>
 
             {projects.length === 0 ? (
-                <div className="text-center py-16">
-                    <p className="text-slate-500 text-lg italic">
-                        Nenhum projeto disponível.
-                        <br />
-                        Devo estar trabalhando em algo muito especial 🚀
-                    </p>
+                <div className="py-2 flex justify-center">
+                    <div className="w-full max-w-xl border-2 border-dashed border-orange-500 bg-slate-100 rounded-xl p-10 text-center">
+
+                        <p className="text-slate-400 text-lg italic leading-relaxed">
+                            Nenhum projeto disponível.
+                            <br />
+                            Devo estar trabalhando em algo muito especial!!!
+                        </p>
+
+                    </div>
                 </div>
             ) : (
                 <ProjectsGrid projects={projects} />

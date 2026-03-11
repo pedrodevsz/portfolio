@@ -19,7 +19,7 @@ export function AboutMe() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
-        <section className="flex flex-col items-center w-full py-12">
+        <section className="flex flex-col items-center w-full py-6">
             <div className="text-center mb-20">
                 <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter">
                     Minha <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Jornada</span>
