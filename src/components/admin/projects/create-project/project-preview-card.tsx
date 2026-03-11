@@ -7,7 +7,7 @@ interface ProjectProps {
     stack: string[]
     techHighlight: string
     githubUrl: string
-    demoUrl: string
+    demoUrl?: string
 }
 
 export function ProjectPreviewCard({ project }: { project: ProjectProps }) {

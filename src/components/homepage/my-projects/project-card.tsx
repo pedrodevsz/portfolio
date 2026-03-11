@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface ProjectProps {
     title: string;
@@ -8,12 +14,12 @@ interface ProjectProps {
     stack: string[];
     techHighlight: string;
     githubUrl: string;
-    demoUrl: string;
+    demoUrl?: string;
 }
 
 const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: { opacity: 1, y: 0 },
 };
 
 export function ProjectCard({ project }: { project: ProjectProps }) {
@@ -41,13 +47,20 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
                 </p>
 
                 <div className="mb-4 p-2 bg-orange-50 rounded-lg border-l-4 border-orange-400">
-                    <span className="text-xs font-bold text-orange-700 uppercase tracking-wider block">Destaque Técnico:</span>
-                    <span className="text-sm text-orange-900">{project.techHighlight}</span>
+                    <span className="text-xs font-bold text-orange-700 uppercase tracking-wider block">
+                        Destaque Técnico:
+                    </span>
+                    <span className="text-sm text-orange-900">
+                        {project.techHighlight}
+                    </span>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-6">
                     {project.stack.map((tech) => (
-                        <span key={tech} className="px-2 py-1 text-[10px] font-semibold bg-slate-100 text-slate-500 rounded-md uppercase">
+                        <span
+                            key={tech}
+                            className="px-2 py-1 text-[10px] font-semibold bg-slate-100 text-slate-500 rounded-md uppercase"
+                        >
                             {tech}
                         </span>
                     ))}
@@ -57,17 +70,36 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
                     <a
                         href={project.githubUrl}
                         target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-black transition-colors"
                     >
                         <FiGithub /> GitHub
                     </a>
-                    <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        className="flex items-center gap-2 text-sm font-bold text-orange-500 hover:text-orange-600 transition-colors"
-                    >
-                        Live Demo <FiExternalLink />
-                    </a>
+
+                    <TooltipProvider>
+                        {project.demoUrl ? (
+                            <a
+                                href={project.demoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-sm font-bold text-orange-500 hover:text-orange-600 transition-colors"
+                            >
+                                Live Demo <FiExternalLink />
+                            </a>
+                        ) : (
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <span className="flex items-center gap-2 text-sm font-bold text-slate-400 cursor-not-allowed">
+                                        Live Demo <FiExternalLink />
+                                    </span>
+                                </TooltipTrigger>
+
+                                <TooltipContent>
+                                    <p>Demo ainda não disponível 🚧</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        )}
+                    </TooltipProvider>
                 </div>
             </div>
         </motion.div>
