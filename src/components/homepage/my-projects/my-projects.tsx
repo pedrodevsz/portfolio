@@ -26,7 +26,17 @@ export async function MyProjects() {
                 </h2>
             </div>
 
-            <ProjectsGrid projects={projects ?? []} />
+            {projects.length === 0 ? (
+                <div className="text-center py-16">
+                    <p className="text-slate-500 text-lg italic">
+                        Nenhum projeto disponível.
+                        <br />
+                        Devo estar trabalhando em algo muito especial 🚀
+                    </p>
+                </div>
+            ) : (
+                <ProjectsGrid projects={projects} />
+            )}
 
         </section>
     )
