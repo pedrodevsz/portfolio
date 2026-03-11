@@ -3,25 +3,25 @@ import { MongoClient } from "mongodb"
 const uri = process.env.MONGODB_URI!
 
 if (!uri) {
-    throw new Error("Please define the MONGODB_URI environment variable")
+    throw new Error("MONGODB_URI não definida")
 }
 
 let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
 declare global {
-    var _mongoClientPromise: Promise<MongoClient>
+    var _mongo: Promise<MongoClient> | undefined
 }
 
-if (process.env.NODE_ENV === "development") {
-    if (!global._mongoClientPromise) {
-        client = new MongoClient(uri)
-        global._mongoClientPromise = client.connect()
-    }
-    clientPromise = global._mongoClientPromise
-} else {
-    client = new MongoClient(uri)
-    clientPromise = client.connect()
+if (!global._mongo) {
+
+    client = new MongoClient(uri, {
+        maxPoolSize: 10
+    })
+
+    global._mongo = client.connect()
 }
+
+clientPromise = global._mongo
 
 export default clientPromise

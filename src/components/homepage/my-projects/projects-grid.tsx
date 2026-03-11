@@ -1,7 +1,12 @@
 "use client"
 
+import { Project } from "../types"
 import { ProjectCard } from "./project-card"
 import { motion } from "framer-motion"
+
+interface ProjectsGridProps {
+    projects: Project[]
+}
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -11,7 +16,7 @@ const containerVariants = {
     }
 }
 
-export function ProjectsGrid({ projects }: any) {
+export function ProjectsGrid({ projects }: ProjectsGridProps) {
     return (
         <motion.div
             variants={containerVariants}
