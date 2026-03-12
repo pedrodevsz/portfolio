@@ -3,21 +3,41 @@ import { NextResponse } from "next/server"
 
 export const runtime = "nodejs"
 
+type Project = {
+    title: string
+    description?: string
+    image?: string
+    link?: string
+    github?: string
+}
+
 export async function POST(req: Request) {
     try {
-        const body = await req.json()
+        const body: Project = await req.json()
+
+        if (!body?.title) {
+            return NextResponse.json(
+                { error: "O campo 'title' é obrigatório" },
+                { status: 400 }
+            )
+        }
 
         const client = await clientPromise
         const db = client.db("portfolio")
 
-        const result = await db.collection("projects").insertOne({
+        const project = {
             ...body,
             createdAt: new Date()
-        })
+        }
+
+        const result = await db.collection("projects").insertOne(project)
 
         return NextResponse.json({
             success: true,
-            id: result.insertedId.toString()
+            project: {
+                _id: result.insertedId.toString(),
+                ...project
+            }
         })
 
     } catch (error) {
@@ -41,7 +61,12 @@ export async function GET() {
             .sort({ createdAt: -1 })
             .toArray()
 
-        return NextResponse.json(projects)
+        const formattedProjects = projects.map((project) => ({
+            ...project,
+            _id: project._id.toString()
+        }))
+
+        return NextResponse.json(formattedProjects)
 
     } catch (error) {
         console.error("GET PROJECTS ERROR:", error)
