@@ -52,7 +52,8 @@ export default function CreateProject() {
         })
 
         const data = await res.json()
-
+        form.reset()
+        setImageFile(null)
         console.log("Projeto salvo:", data)
     }
 
