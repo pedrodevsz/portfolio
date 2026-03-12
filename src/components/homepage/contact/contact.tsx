@@ -57,8 +57,8 @@ const socialLinks: SocialLink[] = [
 
 export function Contacts() {
     return (
-        <section className="py-12 flex flex-col items-center w-full">
-            <div className="text-center mb-16">
+        <section className="py-6 flex flex-col items-center w-full">
+            <div className="text-center md:mb-20 mb-12">
                 <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter">
                     Vamos <span className="text-orange-500">conversar?</span>
                 </h2>

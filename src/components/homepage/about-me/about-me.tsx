@@ -20,14 +20,14 @@ export function AboutMe() {
 
     return (
         <section className="flex flex-col items-center w-full py-6">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 md:mb-20">
                 <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter">
                     Minha <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">Jornada</span>
                 </h2>
                 <p className="text-slate-500 mt-4 font-medium italic">Passe o mouse nas datas para ver os detalhes</p>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-y-24 gap-x-4 md:gap-x-12 max-w-6xl mx-auto relative px-4">
+            <div className="flex flex-wrap justify-center gap-y-10 md:gap-y-24 gap-x-4 md:gap-x-12 max-w-6xl mx-auto relative px-4">
                 {events.map((event, index) => (
                     <div
                         key={index}
