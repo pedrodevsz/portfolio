@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import {
@@ -6,31 +7,25 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import Image from "next/image";
+import { Project } from "@/lib/types/project/types";
 
-interface ProjectProps {
-    title: string;
-    image: string;
-    description: string;
-    stack: string[];
-    techHighlight: string;
-    githubUrl: string;
-    demoUrl?: string;
-}
 
 const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
 };
 
-export function ProjectCard({ project }: { project: ProjectProps }) {
+export function ProjectCard({ project }: { project: Project }) {
     return (
         <motion.div
             variants={itemVariants}
             className="group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col"
         >
             <div className="relative overflow-hidden h-48 bg-slate-100">
-                <img
-                    src={project.image}
+                <Image
+                    fill
+                    src={project.image || "/placeholder-project.png"}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
