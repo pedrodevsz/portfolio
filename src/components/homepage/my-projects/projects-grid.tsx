@@ -1,6 +1,6 @@
 "use client"
 
-import { Project } from "../types"
+import { Project } from "../../../lib/types/project/types"
 import { ProjectCard } from "./project-card"
 import { motion } from "framer-motion"
 

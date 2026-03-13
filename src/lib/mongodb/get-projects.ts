@@ -1,4 +1,4 @@
-import { Project } from "@/components/homepage/types"
+import { Project } from "@/lib/types/project/types"
 import clientPromise from "@/lib/mongodb/mongodb"
 
 export async function getProjects(): Promise<Project[]> {

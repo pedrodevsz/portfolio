@@ -1,19 +1,12 @@
+import { ProjectAPI } from "@/lib/types/project/types"
 import clientPromise from "@/lib/mongodb/mongodb"
 import { NextResponse } from "next/server"
 
 export const runtime = "nodejs"
 
-type Project = {
-    title: string
-    description?: string
-    image?: string
-    link?: string
-    github?: string
-}
-
 export async function POST(req: Request) {
     try {
-        const body: Project = await req.json()
+        const body: ProjectAPI = await req.json()
 
         if (!body?.title) {
             return NextResponse.json(
