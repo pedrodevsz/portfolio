@@ -9,7 +9,7 @@ export const projectSchema = z.object({
 
     stack: z.array(z.string()),
 
-    techHighlight: z.string().min(5, "Destaque técnico muito curto").max(130, "Destaque técnico muito longo"),
+    techHighlight: z.string().min(5, "Destaque técnico muito curto").max(250, "Destaque técnico muito longo"),
 
     githubUrl: z.string().url("URL inválida").or(z.literal("#")),
 
