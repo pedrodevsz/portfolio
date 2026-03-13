@@ -1,16 +1,8 @@
 import { ProjectCard } from "@/components/homepage/my-projects/project-card"
+import { Project } from "@/lib/types/project/types"
 
-interface ProjectProps {
-    title: string
-    image: string
-    description: string
-    stack: string[]
-    techHighlight: string
-    githubUrl: string
-    demoUrl?: string
-}
 
-export function ProjectPreviewCard({ project }: { project: ProjectProps }) {
+export function ProjectPreviewCard({ project }: { project: Project }) {
 
     if (!project.title) {
         return (
