@@ -1,6 +1,6 @@
 import { getProjects } from "@/lib/mongodb/get-projects"
-import { ProjectsGrid } from "./projects-grid"
 import { Project } from "../../../lib/types/project/types";
+import { ProjectsCarousel } from "./project-carousel-";
 
 export const dynamic = "force-dynamic";
 
@@ -39,7 +39,7 @@ export async function MyProjects() {
                     </div>
                 </div>
             ) : (
-                <ProjectsGrid projects={projects} />
+                <ProjectsCarousel projects={projects} />
             )}
 
         </section>
