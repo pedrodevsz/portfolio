@@ -1,59 +1,6 @@
 "use client";
-import React from 'react';
-import {
-    FaLinkedin,
-    FaGithub,
-    FaInstagram,
-    FaTiktok
-} from 'react-icons/fa';
-import { IoMail } from 'react-icons/io5';
-import { IconType } from 'react-icons';
-
-interface SocialLink {
-    name: string;
-    icon: IconType;
-    url: string;
-    color: string;
-    label: string;
-}
-
-const socialLinks: SocialLink[] = [
-    {
-        name: 'LinkedIn',
-        icon: FaLinkedin,
-        url: 'https://linkedin.com/in/seu-usuario',
-        color: 'hover:text-[#0077B5]',
-        label: 'Conectar profissionalmente'
-    },
-    {
-        name: 'GitHub',
-        icon: FaGithub,
-        url: 'https://github.com/seu-usuario',
-        color: 'hover:text-[#333]',
-        label: 'Ver meus projetos'
-    },
-    {
-        name: 'Gmail',
-        icon: IoMail,
-        url: 'mailto:seuemail@gmail.com',
-        color: 'hover:text-[#EA4335]',
-        label: 'Enviar um e-mail'
-    },
-    {
-        name: 'Instagram',
-        icon: FaInstagram,
-        url: 'https://instagram.com/seu-usuario',
-        color: 'hover:text-[#E4405F]',
-        label: 'Acompanhar o dia a dia'
-    },
-    {
-        name: 'TikTok',
-        icon: FaTiktok,
-        url: 'https://tiktok.com/@seu-usuario',
-        color: 'hover:text-[#000000]',
-        label: 'Dicas de programação'
-    },
-];
+import Link from "next/link";
+import { socialLinks } from "./social-links";
 
 export function Contacts() {
     return (
@@ -70,7 +17,7 @@ export function Contacts() {
                     const Icon = social.icon;
 
                     return (
-                        <a
+                        <Link
                             key={social.name}
                             href={social.url}
                             target="_blank"
@@ -79,13 +26,12 @@ export function Contacts() {
                             title={social.label}
                         >
                             <div className="p-5 rounded-2xl bg-white shadow-sm group-hover:shadow-orange-100 group-hover:shadow-2xl transition-all duration-500 border border-slate-100 mb-3 text-slate-500 group-hover:text-inherit">
-                                {/* Agora passamos o size sem erro de tipagem */}
                                 <Icon size={32} />
                             </div>
                             <span className="text-[10px] font-black text-slate-400 group-hover:text-slate-900 uppercase tracking-[0.2em] transition-colors">
                                 {social.name}
                             </span>
-                        </a>
+                        </Link>
                     );
                 })}
             </div>
