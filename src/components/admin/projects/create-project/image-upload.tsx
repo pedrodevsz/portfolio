@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useState } from "react"
 
 interface Props {
@@ -52,8 +53,10 @@ export default function ImageUpload({ onChange }: Props) {
             {preview && (
                 <div className="relative">
 
-                    <img
-                        src={preview}
+                    <Image
+                        src={preview || "/placeholder-project.png"}
+                        alt={"Preview da imagem selecionada"}
+                        fill
                         className="rounded-xl h-48 w-full object-cover border border-gray-200 shadow-sm"
                     />
 
