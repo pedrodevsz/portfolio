@@ -37,12 +37,12 @@ export function Contacts() {
             </div>
 
             <div className="mt-20">
-                <a
-                    href="mailto:seuemail@gmail.com"
+                <Link
+                    href="mailto:pedrodevs25@gmail.com"
                     className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-slate-900 rounded-full hover:bg-orange-600 shadow-xl hover:-translate-y-1"
                 >
                     Me chame para um projeto
-                </a>
+                </Link>
             </div>
         </section>
     );
